@@ -2,7 +2,9 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+app.set('port', process.env.PORT || 3000);
 app.use(express.json());
+var database = require('./programmers');
 
 /* Returns all of the users in our database */
 app.get('/', (req, res) => {
@@ -86,6 +88,6 @@ app.post('/', (req, res) => {
 
 
 app.listen(port, () => {
-	console.log('App listening on port ${port}')
+	console.log("App listening on port " + app.get('port'));
 });
 
